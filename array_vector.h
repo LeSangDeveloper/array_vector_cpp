@@ -24,6 +24,6 @@ class ArrayVector {
         E& at(int i) throw(RuntimeException);
         void reverse(int N);
         void insert(int o, const E& e);
-}
+};
 
 #endif
