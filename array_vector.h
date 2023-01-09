@@ -23,7 +23,7 @@ class ArrayVector {
         bool empty() const;
         E& operator[](int n) throw(RuntimeException);
         E& at(int i) throw(RuntimeException);
-        void reverse(int N);
+        void reserve(int N);
         void insert(int o, const E& e);
 };
 

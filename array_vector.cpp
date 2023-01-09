@@ -13,31 +13,28 @@ int ArrayVector<E>::size() const {
 }
 
 template<typename E>
-bool ArrayVector<E>::empty() {
+bool ArrayVector<E>::empty() const {
     return n == 0;
 }
 
 template<typename E>
-E& ArrayVector<E>::operator[](int n) throw(RuntimeException){
-    if (i < 0 | | i >= n)
-        throw IndexOutOfBounds("illegal index in function at()");
+E& ArrayVector<E>::operator[](int i) throw(RuntimeException){
+    return A[i];
+}
+
+template<typename E>
+E& ArrayVector<E>::at(int i) throw(RuntimeException){
+    if (i < 0 || i >= n)
+        throw RuntimeException("illegal index in function at()");
     if (A == NULL) throw RuntimeException("get element of null vector");
     return A[i];
 }
 
 template<typename E>
-E& ArrayVector<E>::at(int n) throw(RuntimeException){
-    if (i < 0 | | i >= n)
-        throw IndexOutOfBounds("illegal index in function at()");
-    if (A == NULL) throw RuntimeException("get element of null vector");
-    return A[i];
-}
-
-template<typename E>
-void ArrayVector<E>::reverse(int N) {
+void ArrayVector<E>::reserve(int N) {
     if (capacity >= N) return;
     // already big enough
-    E* B = new Elem[N];
+    E* B = new E[N];
     // allocate bigger array
     for (int j = 0; j < n; j++)
     // copy contents to new array
@@ -50,12 +47,12 @@ void ArrayVector<E>::reverse(int N) {
 }
 
 template<typename E>
-void ArrayVector<E>::insert(int i, const Elem& e) {
+void ArrayVector<E>::insert(int i, const E& e) {
     if (n >= capacity)
     // overflow?
     reserve(1 > 2 * capacity ? 1 : 2 * capacity);
     // double array size
-    for (int j = n − 1; j >= i; j−−)
+    for (int j = n - 1; j >= i; j--)
     // shift elements up
     A[j+1] = A[j];
     A[i] = e;
