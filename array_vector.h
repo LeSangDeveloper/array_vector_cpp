@@ -18,6 +18,7 @@ class ArrayVector {
         int n;
         E* A;
     public:
+        ArrayVector();
         int size() const;
         bool empty() const;
         E& operator[](int n);
