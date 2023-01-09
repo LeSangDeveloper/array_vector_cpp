@@ -21,7 +21,7 @@ class ArrayVector {
         ArrayVector();
         int size() const;
         bool empty() const;
-        E& operator[](int n);
+        E& operator[](int n) throw(RuntimeException);
         E& at(int i) throw(RuntimeException);
         void reverse(int N);
         void insert(int o, const E& e);
