@@ -5,10 +5,10 @@
 
 class RuntimeException {
     private:
-        string errorMsg;
+        std::string errorMsg;
     public:
-        RuntimeException(string& msg const)
-        : errorMsg(msg) {}
+        RuntimeException(const std::string& msg) {errorMsg = msg;}
+        std::string getMessage() const {return errorMsg;}
 };
 
 template<typename E>
